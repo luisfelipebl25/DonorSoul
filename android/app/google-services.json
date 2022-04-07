@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "931612915597",
+    "project_id": "donor-soul",
+    "storage_bucket": "donor-soul.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:931612915597:android:504209ae003c84c8226fc4",
+        "android_client_info": {
+          "package_name": "com.donorsoul.donor_soul"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "931612915597-m17arrlddtkai2tb5mn4pgpnbi192vqp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPgL1fMbqEYN35viCKvL-PFmBxmBmVnOk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "931612915597-m17arrlddtkai2tb5mn4pgpnbi192vqp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
