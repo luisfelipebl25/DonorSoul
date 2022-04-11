@@ -39,6 +39,7 @@ dependencies:
   firebase_storage: ^10.2.9
   firebase_core: ^1.13.1
   provider:
+  mask_text_input_formatter: ^2.3.0
 
 dev_dependencies:
   flutter_test:
