@@ -1,7 +1,7 @@
 import 'package:donor_soul/models/user_common_manager.dart';
 import 'package:donor_soul/models/user_institution_manager.dart';
-import 'package:donor_soul/screens/base/base_screen.dart';
-import 'package:donor_soul/screens/feed/feed_screen.dart';
+import 'package:donor_soul/screens/base/base_screen_institution.dart';
+import 'package:donor_soul/screens/base/base_screen_user.dart';
 import 'package:donor_soul/screens/login/login_screen.dart';
 import 'package:donor_soul/screens/register/choose_account_type.dart';
 import 'package:donor_soul/screens/register/register_user_common.dart';
@@ -13,8 +13,6 @@ import 'package:provider/provider.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  // FirebaseFirestore.instance.collection('teste').add({'teste': 'teste2'});
-
   runApp(const DonorSoul());
 }
 
@@ -49,8 +47,10 @@ class DonorSoul extends StatelessWidget {
         initialRoute: '/login',
         onGenerateRoute: (settings) {
           switch (settings.name) {
-            case '/base':
-              return MaterialPageRoute(builder: (_) => BaseScreen());
+            case '/baseUser':
+              return MaterialPageRoute(builder: (_) => BaseScreenUser());
+            case '/baseInstitution':
+              return MaterialPageRoute(builder: (_) => BaseScreenInstitution());
             case '/login':
               return MaterialPageRoute(builder: (_) => const LoginScreen());
             case '/register':
@@ -61,10 +61,8 @@ class DonorSoul extends StatelessWidget {
             case '/register_user_institution':
               return MaterialPageRoute(
                   builder: (_) => RegisterUserInstitution());
-            case '/feed':
-              return MaterialPageRoute(builder: (_) => const FeedScreen());
             default:
-              return MaterialPageRoute(builder: (_) => BaseScreen());
+              return MaterialPageRoute(builder: (_) => LoginScreen());
           }
         },
       ),

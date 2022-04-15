@@ -5,9 +5,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class UserCommonManager extends ChangeNotifier {
-
-  UserCommonManager(){
-    // _loadCurrentUser();
+  UserCommonManager() {
+    _loadCurrentUser();
   }
 
   final FirebaseAuth auth = FirebaseAuth.instance;
@@ -18,12 +17,12 @@ class UserCommonManager extends ChangeNotifier {
   bool _loading = false;
 
   bool get loading => _loading;
-
   bool get isLoggedIn => user != null;
 
-  Future<void> login({required UserCommon user,
-    required Function onFail,
-    required Function onSuccess}) async {
+  Future<void> login(
+      {required UserCommon user,
+      required Function onFail,
+      required Function onSuccess}) async {
     loading = true;
     try {
       final UserCredential result = await auth.signInWithEmailAndPassword(
@@ -34,15 +33,16 @@ class UserCommonManager extends ChangeNotifier {
       await _loadCurrentUser(firebaseUser: result.user);
 
       onSuccess();
-    } on FirebaseAuthException catch(e){
+    } on FirebaseAuthException catch (e) {
       onFail(getErrorString(e.code));
     }
     loading = false;
   }
 
-  Future<void> register({required UserCommon user,
-    required Function onFail,
-    required Function onSuccess}) async {
+  Future<void> register(
+      {required UserCommon user,
+      required Function onFail,
+      required Function onSuccess}) async {
     loading = true;
     try {
       final UserCredential result = await auth.createUserWithEmailAndPassword(
@@ -68,14 +68,20 @@ class UserCommonManager extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> _loadCurrentUser({User? firebaseUser}) async{
+  Future<void> signOut() async {
+    auth.signOut();
+    user = null;
+    notifyListeners();
+  }
+
+  Future<void> _loadCurrentUser({User? firebaseUser}) async {
     final User? currentUser = firebaseUser ?? auth.currentUser;
-    if(currentUser != null){
-      final DocumentSnapshot docUser = await firestore.collection('users_common').doc(currentUser.uid).get();
+    if (currentUser != null) {
+      final DocumentSnapshot docUser =
+          await firestore.collection('users_common').doc(currentUser.uid).get();
       user = UserCommon.fromDocument(docUser);
 
       notifyListeners();
     }
   }
-
 }

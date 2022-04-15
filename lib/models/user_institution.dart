@@ -1,10 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class UserInstitution{
-
+class UserInstitution {
   UserInstitution({required this.email, required this.password});
 
-  UserInstitution.fromDocument(DocumentSnapshot document){
+  UserInstitution.fromDocument(DocumentSnapshot document) {
     id = document.id;
     name = document['name'];
     address = document['address'];
@@ -31,14 +30,15 @@ class UserInstitution{
     return 'UserInstitution{id: $id, name: $name, address: $address, stateCountry: $stateCountry, cep: $cep, city: $city, phone: $phone, email: $email, password: $password, confirmPassword: $confirmPassword}';
   }
 
-  DocumentReference get firestoreRef => FirebaseFirestore.instance.doc('users_institution/$id');
+  DocumentReference get firestoreRef =>
+      FirebaseFirestore.instance.doc('users_institution/$id');
 
-  Future<void> saveData() async{
+  Future<void> saveData() async {
     await firestoreRef.set(toMap());
   }
 
-  Map<String, dynamic> toMap(){
-    return{
+  Map<String, dynamic> toMap() {
+    return {
       'name': name,
       'address': address,
       'stateCountry': stateCountry,
@@ -48,5 +48,4 @@ class UserInstitution{
       'email': email
     };
   }
-
 }

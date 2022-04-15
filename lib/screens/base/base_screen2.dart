@@ -5,8 +5,8 @@ import 'package:donor_soul/screens/settings/settings_user_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class BaseScreen extends StatelessWidget {
-  BaseScreen({Key? key}) : super(key: key);
+class BaseScreen2 extends StatelessWidget {
+  BaseScreen2({Key? key}) : super(key: key);
 
   final PageController pageController = PageController();
 
@@ -14,9 +14,9 @@ class BaseScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer2<UserCommonManager, UserInstitutionManager>(
         builder: (_, userCommonManager, userInstitutionManager, __) {
-      return (Scaffold(
-        body: userCommonManager.isLoggedIn
-            ? PageView(
+      return userCommonManager.isLoggedIn
+          ? Scaffold(
+              body: PageView(
                 controller: pageController,
                 children: [
                   Scaffold(
@@ -31,30 +31,11 @@ class BaseScreen extends StatelessWidget {
                   ),
                   const SettingsUserScreen(),
                 ],
-              )
-            : userInstitutionManager.isLoggedIn
-                ? PageView(
-                    controller: pageController,
-                    children: [
-                      Scaffold(
-                        appBar: AppBar(
-                          title: const Text('Perfil'),
-                        ),
-                      ),
-                      Scaffold(
-                        appBar: AppBar(
-                          title: const Text('Chats'),
-                        ),
-                      ),
-                      const SettingsInstitutionScreen(),
-                    ],
-                  )
-                : Container(),
-        bottomNavigationBar: AnimatedBuilder(
-            animation: pageController,
-            builder: (context, snapshot) {
-              return userCommonManager.isLoggedIn
-                  ? BottomNavigationBar(
+              ),
+              bottomNavigationBar: AnimatedBuilder(
+                  animation: pageController,
+                  builder: (context, snapshot) {
+                    return BottomNavigationBar(
                       elevation: 0,
                       currentIndex: pageController.page?.round() ?? 0,
                       onTap: (index) {
@@ -69,12 +50,32 @@ class BaseScreen extends StatelessWidget {
                             icon: Icon(Icons.chat_outlined), label: 'Chats'),
                         BottomNavigationBarItem(
                           icon: Icon(Icons.settings_outlined),
-                          // label: 'Configurações'),
-                        )
+                        ),
                       ],
-                    )
-                  : userInstitutionManager.isLoggedIn
-                      ? BottomNavigationBar(
+                    );
+                  }))
+          : userInstitutionManager.isLoggedIn
+              ? Scaffold(
+                  body: PageView(
+                    controller: pageController,
+                    children: [
+                      Scaffold(
+                        appBar: AppBar(
+                          title: const Text('Perfil'),
+                        ),
+                      ),
+                      Scaffold(
+                        appBar: AppBar(
+                          title: const Text('Chats'),
+                        ),
+                      ),
+                      const SettingsInstitutionScreen(),
+                    ],
+                  ),
+                  bottomNavigationBar: AnimatedBuilder(
+                      animation: pageController,
+                      builder: (context, snapshot) {
+                        return BottomNavigationBar(
                           showSelectedLabels: false,
                           showUnselectedLabels: false,
                           elevation: 0,
@@ -102,10 +103,9 @@ class BaseScreen extends StatelessWidget {
                                 ),
                                 label: 'Opções'),
                           ],
-                        )
-                      : Container();
-            }),
-      ));
+                        );
+                      }))
+              : Container();
     });
   }
 }

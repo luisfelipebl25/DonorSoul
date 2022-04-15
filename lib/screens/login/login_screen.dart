@@ -35,8 +35,8 @@ class _LoginScreenState extends State<LoginScreen> {
               key: formKey,
               child: Consumer2<UserCommonManager, UserInstitutionManager>(
                 builder: (_, userCommonManager, userInstitutionManager, __) {
-                  print(userCommonManager.loading);
-                  print(userInstitutionManager.loading);
+                  print('usercommon ${userCommonManager.isLoggedIn}');
+                  print('userinst ${userInstitutionManager.isLoggedIn}');
                   return ListView(
                     shrinkWrap: true,
                     padding: const EdgeInsets.all(16),
@@ -239,7 +239,10 @@ class _LoginScreenState extends State<LoginScreen> {
                                             );
                                           },
                                           onSuccess: () {
-                                            Navigator.of(context).pushNamedAndRemoveUntil('/base', (route) => false);
+                                            Navigator.of(context)
+                                                .pushNamedAndRemoveUntil(
+                                                    '/baseUser',
+                                                    (route) => false);
                                           },
                                         )
                                       : userInstitutionManager.login(
@@ -261,7 +264,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                           },
                                           onSuccess: () {
                                             Navigator.of(context)
-                                                .pushReplacementNamed('/base');
+                                                .pushNamedAndRemoveUntil(
+                                                    '/baseInstitution',
+                                                    (route) => false);
                                           });
                                 }
                               },
