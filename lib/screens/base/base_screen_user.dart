@@ -1,64 +1,56 @@
+import 'package:donor_soul/screens/settings/settings_user_screen.dart';
 import 'package:flutter/material.dart';
 
-import '../settings/settings_institution_screen.dart';
-
-class BaseScreenUser extends StatelessWidget {
+class BaseScreenUser extends StatefulWidget {
   BaseScreenUser({Key? key}) : super(key: key);
 
-  final PageController pageController = PageController();
+  @override
+  State<BaseScreenUser> createState() => _BaseScreenUserState();
+}
+
+class _BaseScreenUserState extends State<BaseScreenUser> {
+  int _index = 0;
+  List<Widget> screens = const [
+    Center(
+      child: Text('Feed'),
+    ),
+    Center(
+      child: Text('Chats'),
+    ),
+    SettingsUserScreen(),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: PageView(
-        controller: pageController,
-        children: [
-          Scaffold(
-            appBar: AppBar(
-              title: const Text('Perfil'),
-            ),
+      body: IndexedStack(
+        children: screens,
+        index: _index,
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        onTap: (index) {
+          setState(() {
+            _index = index;
+          });
+        },
+        currentIndex: _index,
+        type: BottomNavigationBarType.shifting,
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Feed',
+            backgroundColor: Colors.amber,
           ),
-          Scaffold(
-            appBar: AppBar(
-              title: const Text('Chats'),
-            ),
-          ),
-          const SettingsInstitutionScreen(),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.chat_outlined),
+              label: 'Chats',
+              backgroundColor: Colors.blueGrey),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.settings_outlined),
+              label: 'Configurações',
+              backgroundColor: Colors.pinkAccent),
         ],
       ),
-      bottomNavigationBar: AnimatedBuilder(
-          animation: pageController,
-          builder: (context, snapshot) {
-            return BottomNavigationBar(
-              showSelectedLabels: false,
-              showUnselectedLabels: false,
-              elevation: 0,
-              currentIndex: pageController.page?.round() ?? 0,
-              onTap: (index) {
-                pageController.jumpToPage(index);
-              },
-              items: const [
-                BottomNavigationBarItem(
-                    icon: Icon(
-                      Icons.account_circle_outlined,
-                      size: 26,
-                    ),
-                    label: 'Feed'),
-                BottomNavigationBarItem(
-                    icon: Icon(
-                      Icons.chat_outlined,
-                      size: 26,
-                    ),
-                    label: 'Chats'),
-                BottomNavigationBarItem(
-                    icon: Icon(
-                      Icons.settings_outlined,
-                      size: 26,
-                    ),
-                    label: 'Opções'),
-              ],
-            );
-          }),
     );
   }
 }
