@@ -39,9 +39,10 @@ class DonorSoul extends StatelessWidget {
           primaryColor: const Color.fromRGBO(56, 181, 235, 1),
           appBarTheme: const AppBarTheme(
             backgroundColor: Color.fromRGBO(56, 181, 235, 1),
-            elevation: 0,
+            elevation: 0.7,
             centerTitle: true,
           ),
+          backgroundColor: const Color.fromRGBO(238, 238, 238, 0),
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
         initialRoute: '/login',

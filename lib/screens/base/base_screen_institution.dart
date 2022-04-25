@@ -1,3 +1,5 @@
+import 'package:donor_soul/screens/chat/chat_institution_screen.dart';
+import 'package:donor_soul/screens/profile/profile_screen.dart';
 import 'package:donor_soul/screens/settings/settings_institution_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -11,17 +13,14 @@ class BaseScreenInstitution extends StatefulWidget {
 class _BaseScreenInstitutionState extends State<BaseScreenInstitution> {
   int _index = 0;
   List<Widget> screens = const [
-    Center(
-      child: Text('Feed'),
-    ),
-    Center(
-      child: Text('Chats'),
-    ),
+    ProfileScreen(),
+    ChatInstitutionScreen(),
     SettingsInstitutionScreen(),
   ];
 
   @override
   Widget build(BuildContext context) {
+    final Color primaryColor = Theme.of(context).primaryColor;
     return Scaffold(
       body: IndexedStack(
         children: screens,
@@ -35,20 +34,22 @@ class _BaseScreenInstitutionState extends State<BaseScreenInstitution> {
         },
         currentIndex: _index,
         type: BottomNavigationBarType.shifting,
-        items: const [
+        items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Feed',
-            backgroundColor: Colors.black12,
+            icon: const Icon(Icons.person),
+            label: 'Perfil',
+            backgroundColor: primaryColor,
           ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.chat_outlined),
-              label: 'Chats',
-              backgroundColor: Colors.lightGreen),
+            icon: const Icon(Icons.chat_outlined),
+            label: 'Chats',
+            backgroundColor: primaryColor,
+          ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.settings_outlined),
-              label: 'Configurações',
-              backgroundColor: Colors.redAccent),
+            icon: const Icon(Icons.settings_outlined),
+            label: 'Configurações',
+            backgroundColor: primaryColor,
+          ),
         ],
       ),
     );

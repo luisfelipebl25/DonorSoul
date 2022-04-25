@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 
-class UserInstitution {
+class UserInstitution extends ChangeNotifier {
   UserInstitution({required this.email, required this.password});
 
   UserInstitution.fromDocument(DocumentSnapshot document) {
@@ -12,6 +13,9 @@ class UserInstitution {
     city = document['city'];
     phone = document['phone'];
     email = document['email'];
+    images = List<String>.from(document['images'] as List<dynamic>);
+    description = document['description'];
+    emailContact = document['emailContact'];
   }
 
   String id = '';
@@ -24,10 +28,13 @@ class UserInstitution {
   late String email;
   late String password;
   late String confirmPassword;
+  List<String> images = [];
+  String description = '';
+  String emailContact = '';
 
   @override
   String toString() {
-    return 'UserInstitution{id: $id, name: $name, address: $address, stateCountry: $stateCountry, cep: $cep, city: $city, phone: $phone, email: $email, password: $password, confirmPassword: $confirmPassword}';
+    return 'UserInstitution{id: $id, name: $name, address: $address, stateCountry: $stateCountry, cep: $cep, city: $city, phone: $phone, email: $email, password: $password, confirmPassword: $confirmPassword, images: $images, description: $description, emailContact: $emailContact}';
   }
 
   DocumentReference get firestoreRef =>
@@ -45,7 +52,10 @@ class UserInstitution {
       'cep': cep,
       'city': city,
       'phone': phone,
-      'email': email
+      'email': email,
+      'images': images,
+      'description': description,
+      'emailContact': emailContact,
     };
   }
 }

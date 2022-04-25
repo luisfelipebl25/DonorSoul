@@ -39,7 +39,10 @@ dependencies:
   firebase_storage: ^10.2.9
   firebase_core: ^1.13.1
   provider:
+  image_picker: ^0.8.5
+  image_cropper: ^1.5.1
   mask_text_input_formatter: ^2.3.0
+  flutter_carousel_slider: ^1.0.8
 
 dev_dependencies:
   flutter_test:

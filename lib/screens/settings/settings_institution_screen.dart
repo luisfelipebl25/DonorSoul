@@ -9,9 +9,9 @@ class SettingsInstitutionScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Configurações',
-          style: TextStyle(fontFamily: 'Montserrat'),
+        title: Image.asset(
+          'assets/images/logo-black1.png',
+          width: 250,
         ),
       ),
       body: Consumer<UserInstitutionManager>(

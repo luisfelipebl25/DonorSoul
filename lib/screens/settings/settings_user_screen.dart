@@ -9,9 +9,9 @@ class SettingsUserScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Configurações',
-          style: TextStyle(fontFamily: 'Montserrat'),
+        title: SizedBox(
+          height: kToolbarHeight,
+          child: Image.asset('assets/images/logo1.png'),
         ),
       ),
       body: Consumer<UserCommonManager>(

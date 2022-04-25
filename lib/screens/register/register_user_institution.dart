@@ -128,8 +128,8 @@ class _RegisterUserInstitutionState extends State<RegisterUserInstitution> {
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(5)),
                                 ),
-                                contentPadding:
-                                    EdgeInsets.only(top: 5, bottom: 5, right: 5),
+                                contentPadding: EdgeInsets.only(
+                                    top: 5, bottom: 5, right: 5),
                                 prefixIcon: Icon(Icons.place_outlined),
                               ),
                               value: _selectedValue,
@@ -405,7 +405,7 @@ class _RegisterUserInstitutionState extends State<RegisterUserInstitution> {
                                   duration: Duration(seconds: 1),
                                 ),
                               );
-                              Navigator.of(context).pushReplacementNamed('/base');
+                              Navigator.of(context).popAndPushNamed('/login');
                             },
                           );
                         }

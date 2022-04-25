@@ -27,6 +27,10 @@ class _LoginScreenState extends State<LoginScreen> {
     final Color primaryColor = Theme.of(context).primaryColor;
     return Scaffold(
       backgroundColor: Colors.white,
+      appBar: AppBar(
+        title: Image.asset('assets/images/logo-black1.png', width: 280),
+        backgroundColor: Colors.grey[300],
+      ),
       body: Stack(
         children: [
           const GradientContainer(),
@@ -35,8 +39,6 @@ class _LoginScreenState extends State<LoginScreen> {
               key: formKey,
               child: Consumer2<UserCommonManager, UserInstitutionManager>(
                 builder: (_, userCommonManager, userInstitutionManager, __) {
-                  print('usercommon ${userCommonManager.isLoggedIn}');
-                  print('userinst ${userInstitutionManager.isLoggedIn}');
                   return ListView(
                     shrinkWrap: true,
                     padding: const EdgeInsets.all(16),
