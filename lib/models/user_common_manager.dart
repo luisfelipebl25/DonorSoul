@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 
 class UserCommonManager extends ChangeNotifier {
   UserCommonManager() {
-    _loadCurrentUser();
+    // _loadCurrentUser();
   }
 
   final FirebaseAuth auth = FirebaseAuth.instance;

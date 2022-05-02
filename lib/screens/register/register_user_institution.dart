@@ -405,7 +405,7 @@ class _RegisterUserInstitutionState extends State<RegisterUserInstitution> {
                                   duration: Duration(seconds: 1),
                                 ),
                               );
-                              Navigator.of(context).popAndPushNamed('/login');
+                              Navigator.of(context).popUntil((route) => false);
                             },
                           );
                         }

@@ -16,6 +16,38 @@ class UserInstitution extends ChangeNotifier {
     images = List<String>.from(document['images'] as List<dynamic>);
     description = document['description'];
     emailContact = document['emailContact'];
+    items = List<String>.from(document['items']);
+  }
+
+  UserInstitution.all(
+      this.id,
+      this.name,
+      this.address,
+      this.stateCountry,
+      this.cep,
+      this.city,
+      this.phone,
+      this.email,
+      this.password,
+      this.confirmPassword,
+      this.images,
+      this.description,
+      this.emailContact,
+      this.items) {
+    id = id;
+    name = name;
+    address = address;
+    stateCountry = stateCountry;
+    cep = cep;
+    city = city;
+    phone = phone;
+    email = email;
+    password = password;
+    confirmPassword = confirmPassword;
+    images = images;
+    description = description;
+    emailContact = emailContact;
+    items = items;
   }
 
   String id = '';
@@ -26,15 +58,16 @@ class UserInstitution extends ChangeNotifier {
   late String city;
   late String phone;
   late String email;
-  late String password;
-  late String confirmPassword;
+  String password = '';
+  String confirmPassword = '';
   List<String> images = [];
   String description = '';
   String emailContact = '';
+  List<String> items = [];
 
   @override
   String toString() {
-    return 'UserInstitution{id: $id, name: $name, address: $address, stateCountry: $stateCountry, cep: $cep, city: $city, phone: $phone, email: $email, password: $password, confirmPassword: $confirmPassword, images: $images, description: $description, emailContact: $emailContact}';
+    return 'UserInstitution{id: $id, name: $name, address: $address, stateCountry: $stateCountry, cep: $cep, city: $city, phone: $phone, email: $email, password: $password, confirmPassword: $confirmPassword, images: $images, description: $description, emailContact: $emailContact, items: $items}';
   }
 
   DocumentReference get firestoreRef =>
@@ -56,6 +89,26 @@ class UserInstitution extends ChangeNotifier {
       'images': images,
       'description': description,
       'emailContact': emailContact,
+      'items': items,
     };
+  }
+
+  UserInstitution clone() {
+    return UserInstitution.all(
+      id,
+      name,
+      address,
+      stateCountry,
+      cep,
+      city,
+      phone,
+      email,
+      password,
+      confirmPassword,
+      images,
+      description,
+      emailContact,
+      items,
+    );
   }
 }

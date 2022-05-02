@@ -158,6 +158,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         enabled: !userCommonManager.loading &&
                             !userInstitutionManager.loading,
                         textAlignVertical: TextAlignVertical.center,
+                        autocorrect: false,
                         controller: emailController,
                         validator: (email) {
                           if (email!.isEmpty) {
@@ -187,6 +188,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         enabled: !userCommonManager.loading &&
                             !userInstitutionManager.loading,
                         textAlignVertical: TextAlignVertical.center,
+                        autocorrect: false,
                         controller: passController,
                         validator: (pass) {
                           if (pass!.isEmpty) {

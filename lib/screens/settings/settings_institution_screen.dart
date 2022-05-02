@@ -21,25 +21,31 @@ class SettingsInstitutionScreen extends StatelessWidget {
             children: [
               InkWell(
                 onTap: () {
-                  Navigator.of(context).pushReplacementNamed('/login');
+                  Navigator.of(context)
+                      .pushNamedAndRemoveUntil('/login', (route) => false);
                   userInstitutionManager.signOut();
                 },
-                child: Padding(
+                child: Container(
                   padding: const EdgeInsets.all(16),
-                  child: Expanded(
-                    child: Row(
-                      children: const [
-                        Icon(Icons.logout),
-                        SizedBox(
-                          width: 5,
+                  child: Row(
+                    children: [
+                      Expanded(
+                        flex: 1,
+                        child: Row(
+                          children: const [
+                            Icon(Icons.logout),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Text(
+                              'Sair',
+                              style: TextStyle(
+                                  fontFamily: 'Montserrat', fontSize: 16),
+                            ),
+                          ],
                         ),
-                        Text(
-                          'Sair',
-                          style:
-                              TextStyle(fontFamily: 'Montserrat', fontSize: 16),
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
               ),

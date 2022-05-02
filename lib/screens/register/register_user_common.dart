@@ -191,7 +191,8 @@ class RegisterUserCommon extends StatelessWidget {
                                 SnackBar(
                                   content: Text(
                                     e,
-                                    style: const TextStyle(fontFamily: 'Montserrat'),
+                                    style: const TextStyle(
+                                        fontFamily: 'Montserrat'),
                                   ),
                                   backgroundColor: Colors.red,
                                   duration: const Duration(seconds: 1),
@@ -208,7 +209,7 @@ class RegisterUserCommon extends StatelessWidget {
                                   duration: Duration(seconds: 1),
                                 ),
                               );
-                              Navigator.of(context).pushReplacementNamed('/base');
+                              Navigator.of(context).popUntil((route) => false);
                             },
                           );
                         }

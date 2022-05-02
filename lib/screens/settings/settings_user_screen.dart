@@ -24,22 +24,19 @@ class SettingsUserScreen extends StatelessWidget {
                   Navigator.of(context).popAndPushNamed('/login');
                   userCommonManager.signOut();
                 },
-                child: Padding(
-                  padding: const EdgeInsets.all(16),
-                  child: Expanded(
-                    child: Row(
-                      children: const [
-                        Icon(Icons.logout),
-                        SizedBox(
-                          width: 5,
-                        ),
-                        Text(
-                          'Sair',
-                          style:
-                              TextStyle(fontFamily: 'Montserrat', fontSize: 16),
-                        ),
-                      ],
-                    ),
+                child: Expanded(
+                  child: Row(
+                    children: const [
+                      Icon(Icons.logout),
+                      SizedBox(
+                        width: 5,
+                      ),
+                      Text(
+                        'Sair',
+                        style:
+                            TextStyle(fontFamily: 'Montserrat', fontSize: 16),
+                      ),
+                    ],
                   ),
                 ),
               ),

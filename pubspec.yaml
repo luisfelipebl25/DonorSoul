@@ -43,6 +43,7 @@ dependencies:
   image_cropper: ^1.5.1
   mask_text_input_formatter: ^2.3.0
   flutter_carousel_slider: ^1.0.8
+  carousel_slider: ^4.0.0
 
 dev_dependencies:
   flutter_test:

@@ -5,5 +5,5 @@ var maskPhone = MaskTextInputFormatter(
 );
 
 var maskCEP = MaskTextInputFormatter(
-  mask: '#####-###',
+  mask: '##.###-###',
 );

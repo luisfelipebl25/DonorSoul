@@ -1,7 +1,9 @@
 import 'package:donor_soul/models/user_common_manager.dart';
+import 'package:donor_soul/models/user_institution.dart';
 import 'package:donor_soul/models/user_institution_manager.dart';
 import 'package:donor_soul/screens/base/base_screen_institution.dart';
 import 'package:donor_soul/screens/base/base_screen_user.dart';
+import 'package:donor_soul/screens/edit_profile/edit_profile_screen.dart';
 import 'package:donor_soul/screens/login/login_screen.dart';
 import 'package:donor_soul/screens/register/choose_account_type.dart';
 import 'package:donor_soul/screens/register/register_user_common.dart';
@@ -45,7 +47,7 @@ class DonorSoul extends StatelessWidget {
           backgroundColor: const Color.fromRGBO(238, 238, 238, 0),
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
-        initialRoute: '/login',
+        // initialRoute: '/login',
         onGenerateRoute: (settings) {
           switch (settings.name) {
             case '/baseUser':
@@ -61,9 +63,14 @@ class DonorSoul extends StatelessWidget {
               return MaterialPageRoute(builder: (_) => RegisterUserCommon());
             case '/register_user_institution':
               return MaterialPageRoute(
-                  builder: (_) => RegisterUserInstitution());
+                  builder: (_) => const RegisterUserInstitution());
+            case '/edit_profile':
+              return MaterialPageRoute(
+                  builder: (_) => EditProfileScreen(
+                        user: settings.arguments as UserInstitution,
+                      ));
             default:
-              return MaterialPageRoute(builder: (_) => LoginScreen());
+              return MaterialPageRoute(builder: (_) => const LoginScreen());
           }
         },
       ),
