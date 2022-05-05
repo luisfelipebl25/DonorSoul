@@ -21,7 +21,8 @@ class SettingsUserScreen extends StatelessWidget {
             children: [
               InkWell(
                 onTap: () {
-                  Navigator.of(context).popAndPushNamed('/login');
+                  Navigator.of(context)
+                      .pushNamedAndRemoveUntil('/login', (route) => false);
                   userCommonManager.signOut();
                 },
                 child: Expanded(

@@ -4,7 +4,7 @@ import 'package:donor_soul/screens/settings/settings_institution_screen.dart';
 import 'package:flutter/material.dart';
 
 class BaseScreenInstitution extends StatefulWidget {
-  BaseScreenInstitution({Key? key}) : super(key: key);
+  const BaseScreenInstitution({Key? key}) : super(key: key);
 
   @override
   State<BaseScreenInstitution> createState() => _BaseScreenInstitutionState();

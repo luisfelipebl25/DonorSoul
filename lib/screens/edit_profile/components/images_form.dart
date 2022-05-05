@@ -21,12 +21,15 @@ class ImagesForm extends StatelessWidget {
           return null;
         }
       },
+      onSaved: (images) {
+        user.newImages = images;
+      },
       builder: (state) {
         return Column(
           children: [
             CarouselSlider(
               options: CarouselOptions(
-                height: 350,
+                height: 400,
                 viewportFraction: 1,
                 enableInfiniteScroll: false,
                 enlargeCenterPage: true,

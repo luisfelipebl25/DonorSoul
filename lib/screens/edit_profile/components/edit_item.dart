@@ -13,49 +13,61 @@ class EditItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return Column(
       children: [
-        Expanded(
-          child: Consumer<UserInstitutionManager>(
-            builder: (_, userInstitutionManager, __) {
-              return TextFormField(
-                initialValue: item,
-                decoration: InputDecoration(
-                    contentPadding: const EdgeInsets.only(
-                        top: 0, bottom: 0, left: 10, right: 10),
-                    labelText: 'Item',
-                    labelStyle:
-                        const TextStyle(fontFamily: 'Montserrat', fontSize: 15),
-                    floatingLabelAlignment: FloatingLabelAlignment.start,
-                    border: OutlineInputBorder(
-                        borderSide: const BorderSide(
-                          width: 2,
-                        ),
-                        gapPadding: 05,
-                        borderRadius: BorderRadius.circular(5))),
-                style: TextStyle(
-                  fontSize: 16,
-                  fontFamily: 'Montserrat',
-                  fontWeight: FontWeight.w600,
-                  color: Colors.grey[800],
-                ),
-                textAlign: TextAlign.start,
-                validator: (item) {
-                  if (!itemValid(item!)) {
-                    return 'Item inválido!';
-                  } else {
-                    return null;
-                  }
+        Row(
+          children: [
+            Expanded(
+              child: Consumer<UserInstitutionManager>(
+                builder: (_, userInstitutionManager, __) {
+                  return TextFormField(
+                      initialValue: item,
+                      decoration: InputDecoration(
+                          contentPadding: const EdgeInsets.only(
+                              top: 0, bottom: 0, left: 10, right: 10),
+                          labelText: 'Item',
+                          labelStyle: const TextStyle(
+                              fontFamily: 'Montserrat', fontSize: 15),
+                          floatingLabelAlignment: FloatingLabelAlignment.start,
+                          border: OutlineInputBorder(
+                              borderSide: const BorderSide(
+                                width: 2,
+                              ),
+                              gapPadding: 05,
+                              borderRadius: BorderRadius.circular(5))),
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontFamily: 'Montserrat',
+                        fontWeight: FontWeight.w600,
+                        color: Colors.grey[800],
+                      ),
+                      textAlign: TextAlign.start,
+                      validator: (item) {
+                        if (!itemValid(item!)) {
+                          return 'Item inválido!';
+                        } else {
+                          return null;
+                        }
+                      },
+                      onSaved: (_item) {
+                        userInstitutionManager.user?.items
+                            .removeWhere((element) => element == '');
+                        userInstitutionManager.user?.items
+                            .removeWhere((element) => element == _item);
+                        userInstitutionManager.user?.items.add(_item!);
+                      });
                 },
-                // onEditingComplete: (_item) => item = _item!,
-              );
-            },
-          ),
+              ),
+            ),
+            IconButton(
+              onPressed: onPressed,
+              icon: const Icon(Icons.remove_circle_outline),
+            ),
+          ],
         ),
-        IconButton(
-          onPressed: onPressed,
-          icon: const Icon(Icons.remove_circle_outline),
-        ),
+        const SizedBox(
+          height: 10,
+        )
       ],
     );
   }

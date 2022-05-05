@@ -4,7 +4,7 @@ import 'package:donor_soul/screens/settings/settings_user_screen.dart';
 import 'package:flutter/material.dart';
 
 class BaseScreenUser extends StatefulWidget {
-  BaseScreenUser({Key? key}) : super(key: key);
+  const BaseScreenUser({Key? key}) : super(key: key);
 
   @override
   State<BaseScreenUser> createState() => _BaseScreenUserState();

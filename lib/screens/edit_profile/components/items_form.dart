@@ -14,16 +14,23 @@ class ItemsForm extends StatelessWidget {
     return FormField<List<String>>(
       validator: (items) {
         if (items!.isEmpty) {
-          return 'Insira um item';
+          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+            content: Text(
+              'Insira ao menos um item',
+              style: TextStyle(
+                  color: Colors.red,
+                  fontFamily: 'Montserrat',
+                  fontWeight: FontWeight.w700,
+                  fontSize: 14),
+            ),
+            backgroundColor: Colors.white,
+            duration: Duration(seconds: 2),
+          ));
         } else {
           return null;
         }
       },
       initialValue: user.items,
-      onSaved: (items) {
-        user.items = [];
-        user.items = items!;
-      },
       builder: (state) {
         return Column(
           children: [

@@ -51,7 +51,7 @@ class FeedScreen extends StatelessWidget {
                     height: 15,
                   ),
                   Row(
-                    children: [
+                    children: const [
                       TagWidget(),
                       TagWidget(),
                       TagWidget(),
@@ -97,7 +97,7 @@ class FeedScreen extends StatelessWidget {
                     height: 15,
                   ),
                   Row(
-                    children: [
+                    children: const [
                       TagWidget(),
                       TagWidget(),
                       TagWidget(),
@@ -143,7 +143,7 @@ class FeedScreen extends StatelessWidget {
                     height: 15,
                   ),
                   Row(
-                    children: [
+                    children: const [
                       TagWidget(),
                       TagWidget(),
                       TagWidget(),

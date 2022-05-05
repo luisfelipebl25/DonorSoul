@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 
 class UserInstitution extends ChangeNotifier {
@@ -50,6 +51,11 @@ class UserInstitution extends ChangeNotifier {
     items = items;
   }
 
+  final FirebaseFirestore firestore = FirebaseFirestore.instance;
+  final FirebaseStorage storage = FirebaseStorage.instance;
+  DocumentReference get firestoreRef => firestore.doc('users_institution/$id');
+  Reference get storageRef => storage.ref().child('institutions').child(name);
+
   String id = '';
   late String name;
   late String address;
@@ -65,13 +71,12 @@ class UserInstitution extends ChangeNotifier {
   String emailContact = '';
   List<String> items = [];
 
+  List<dynamic>? newImages;
+
   @override
   String toString() {
-    return 'UserInstitution{id: $id, name: $name, address: $address, stateCountry: $stateCountry, cep: $cep, city: $city, phone: $phone, email: $email, password: $password, confirmPassword: $confirmPassword, images: $images, description: $description, emailContact: $emailContact, items: $items}';
+    return 'UserInstitution{id: $id, name: $name, address: $address, stateCountry: $stateCountry, cep: $cep, city: $city, phone: $phone, email: $email, images: $images, description: $description, emailContact: $emailContact, items: $items, newImages: $newImages}';
   }
-
-  DocumentReference get firestoreRef =>
-      FirebaseFirestore.instance.doc('users_institution/$id');
 
   Future<void> saveData() async {
     await firestoreRef.set(toMap());

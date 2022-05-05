@@ -209,7 +209,8 @@ class RegisterUserCommon extends StatelessWidget {
                                   duration: Duration(seconds: 1),
                                 ),
                               );
-                              Navigator.of(context).popUntil((route) => false);
+                              Navigator.of(context).pushNamedAndRemoveUntil(
+                                  '/login', (route) => false);
                             },
                           );
                         }

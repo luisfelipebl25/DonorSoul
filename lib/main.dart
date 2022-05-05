@@ -32,7 +32,7 @@ class DonorSoul extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) => UserInstitutionManager(),
           lazy: false,
-        )
+        ),
       ],
       child: MaterialApp(
         title: 'Donor Soul',
@@ -51,9 +51,10 @@ class DonorSoul extends StatelessWidget {
         onGenerateRoute: (settings) {
           switch (settings.name) {
             case '/baseUser':
-              return MaterialPageRoute(builder: (_) => BaseScreenUser());
+              return MaterialPageRoute(builder: (_) => const BaseScreenUser());
             case '/baseInstitution':
-              return MaterialPageRoute(builder: (_) => BaseScreenInstitution());
+              return MaterialPageRoute(
+                  builder: (_) => const BaseScreenInstitution());
             case '/login':
               return MaterialPageRoute(builder: (_) => const LoginScreen());
             case '/register':

@@ -59,7 +59,7 @@ class ProfileScreen extends StatelessWidget {
                   )
                 else
                   Container(
-                    height: 350,
+                    height: 400,
                     color: Theme.of(context).backgroundColor,
                     child: Center(
                       child: Icon(
@@ -156,6 +156,9 @@ class ProfileScreen extends StatelessWidget {
                           ),
                         ],
                       ),
+                      const SizedBox(
+                        height: 3,
+                      ),
                       OverflowBar(
                         children: [
                           Row(
@@ -190,6 +193,9 @@ class ProfileScreen extends StatelessWidget {
                             ),
                           ),
                         ],
+                      ),
+                      const SizedBox(
+                        height: 3,
                       ),
                       OverflowBar(
                         children: [
@@ -256,6 +262,9 @@ class ProfileScreen extends StatelessWidget {
                           ),
                         ],
                       ),
+                      const SizedBox(
+                        height: 3,
+                      ),
                       if (userInst.user!.emailContact.isNotEmpty)
                         OverflowBar(
                           children: [
@@ -287,7 +296,7 @@ class ProfileScreen extends StatelessWidget {
                               size: 22,
                             ),
                             Text(
-                              'E-mail para contato',
+                              ' E-mail para contato',
                               style: TextStyle(
                                   color: Colors.grey[500],
                                   fontSize: 15,
@@ -338,14 +347,22 @@ class ProfileScreen extends StatelessWidget {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: (userInst.user!.items.map((item) {
-                          return Text(
-                            '- $item',
-                            style: TextStyle(
-                              fontWeight: FontWeight.w700,
-                              color: Colors.grey[700],
-                              fontSize: 15,
-                              fontFamily: 'Montserrat',
-                            ),
+                          return Column(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: [
+                              Text(
+                                '- $item',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w700,
+                                  color: Colors.grey[600],
+                                  fontSize: 16,
+                                  fontFamily: 'Montserrat',
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 5,
+                              )
+                            ],
                           );
                         })).toList(),
                       ),

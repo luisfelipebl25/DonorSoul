@@ -346,21 +346,26 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     Consumer<UserInstitutionManager>(
                       builder: (_, userInstitutionManager, __) {
                         return ElevatedButton(
-                          onPressed: () {
+                          onPressed: () async {
                             if (formKey.currentState!.validate()) {
                               formKey.currentState!.save();
                               widget.user.stateCountry = _selectedValue!;
-                              print(widget.user);
-                              print(userInstitutionManager.user);
+                              await userInstitutionManager.save();
+                              Navigator.of(context).pop();
                             }
                           },
-                          child: const Text(
-                            'Salvar',
-                            style: TextStyle(
-                                fontFamily: 'Montserrat',
-                                fontSize: 17,
-                                fontWeight: FontWeight.w700),
-                          ),
+                          child: userInstitutionManager.loading
+                              ? const CircularProgressIndicator(
+                                  valueColor:
+                                      AlwaysStoppedAnimation(Colors.white),
+                                )
+                              : const Text(
+                                  'Salvar',
+                                  style: TextStyle(
+                                      fontFamily: 'Montserrat',
+                                      fontSize: 17,
+                                      fontWeight: FontWeight.w700),
+                                ),
                           style: ElevatedButton.styleFrom(
                               padding: const EdgeInsets.symmetric(vertical: 12),
                               primary: primaryColor),

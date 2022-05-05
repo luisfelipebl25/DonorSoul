@@ -365,7 +365,6 @@ class _RegisterUserInstitutionState extends State<RegisterUserInstitution> {
                         if (formKey.currentState!.validate()) {
                           formKey.currentState!.save();
                           userInstitution.stateCountry = _selectedValue!;
-                          print(userInstitution);
                           if (userInstitution.password !=
                               userInstitution.confirmPassword) {
                             ScaffoldMessenger.of(context).clearSnackBars();
@@ -388,10 +387,11 @@ class _RegisterUserInstitutionState extends State<RegisterUserInstitution> {
                                 SnackBar(
                                   content: Text(
                                     e,
-                                    style: TextStyle(fontFamily: 'Montserrat'),
+                                    style: const TextStyle(
+                                        fontFamily: 'Montserrat'),
                                   ),
                                   backgroundColor: Colors.red,
-                                  duration: Duration(seconds: 1),
+                                  duration: const Duration(seconds: 1),
                                 ),
                               );
                             },
@@ -405,7 +405,8 @@ class _RegisterUserInstitutionState extends State<RegisterUserInstitution> {
                                   duration: Duration(seconds: 1),
                                 ),
                               );
-                              Navigator.of(context).popUntil((route) => false);
+                              Navigator.of(context).pushNamedAndRemoveUntil(
+                                  '/login', (route) => false);
                             },
                           );
                         }
